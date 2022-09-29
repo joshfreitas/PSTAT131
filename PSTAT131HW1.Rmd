@@ -7,4 +7,4 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# This is just me showing that this would be considered a test of Git.
+# This is just me showing that this would be considered a test of Git. Yes
