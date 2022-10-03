@@ -7,4 +7,8 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# This is just me showing that this would be considered a test of Git. Yes
+# Okay this was helpful in me actually understanding how to use GitHub.
+
+```{r}
+
+```
