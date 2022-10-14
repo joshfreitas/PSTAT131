@@ -1,0 +1,51 @@
+---
+title: "PSTAT 131 - Final Project"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Loading in the csv file and packages
+```{r}
+library(ggplot2)
+library(tidymodels)
+library(tidyverse)
+library(corrplot)
+
+getwd()
+housingData <- read.csv("/Users/joshfreitas/Desktop/pstat 131/PSTAT131/clean_2000_2018.csv")
+head(housingData)
+```
+
+# Messing around with the data
+```{r}
+housingData %>% 
+  select(is.numeric) %>% 
+  cor() %>% 
+  corrplot(type = 'lower', diag = TRUE, 
+           method = 'square')
+```
+
+```{r}
+housingData_clean <- housingData %>% filter(!is.na(baths) & !is.na(sqft))
+housingData_clean
+```
+
+```{r}
+# housingData %>% 
+#   ggplot(aes(x = price, y = reorder(county, price))) + 
+#   geom_boxplot() +
+#   labs(y = "County", x = "Price") +
+#   theme_bw()
+
+ggplot(data = housingData_clean, aes(x = fct_reorder(county, price), y = price)) + 
+  geom_bar(position = 'dodge',
+           stat = 'summary',
+           fun  = 'mean',
+           fill = rainbow(n = 11)) +
+  theme_light()
+```
+
+
